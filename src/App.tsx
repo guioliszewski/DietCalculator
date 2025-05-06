@@ -22,6 +22,11 @@ export default function App() {
     tdee: number;
     tdeeBase: number;
     goalLevel: GoalLevel;
+    macros?: {
+      protein: number;
+      fats: number;
+      carbs: number;
+    };
   } | null>(null);
 
   const handleNumberChange =
@@ -62,17 +67,26 @@ export default function App() {
 
     const tdeeBase = bmr * activityMultiplier[activityLevel];
     const tdee = tdeeBase * goalMultiplier[goalLevel];
+
+    const protein = weightValue * 2.5;
+    const fats = weightValue * 0.8;
+    const carbs = (tdee - protein * 4 - fats * 9) / 4;
     setResult({
       bmr: Math.round(bmr),
       tdee: Math.round(tdee),
       tdeeBase: Math.round(tdeeBase),
       goalLevel: goalLevel,
+      macros: {
+        protein: Math.round(protein),
+        fats: Math.round(fats),
+        carbs: Math.round(carbs),
+      },
     });
   };
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md bg-white ml-30 rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           🥩 Calculadora de Gasto Calórico 🥗
         </h1>
@@ -238,12 +252,21 @@ export default function App() {
                   </span>{" "}
                   {result.tdee} kcal/dia
                 </p>
+                {result?.macros && (
+                  <div className="mt-4 p-4 bg-blue-50 rounded-md">
+                    <h3 className="font-medium text-gray-800">
+                      Macronutrientes:
+                    </h3>
+                    <p>Proteína: {result.macros.protein}g</p>
+                    <p>Gorduras: {result.macros.fats}g</p>
+                    <p>Carboidratos: {result.macros.carbs}g</p>
+                  </div>
+                )}
               </div>
             </div>
           )}
         </div>
       </div>
-      <div className="max-w-md ml-auto bg-white mr-30 rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6"></div>
     </div>
   );
 }
