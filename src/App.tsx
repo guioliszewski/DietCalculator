@@ -72,7 +72,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <div className="max-w-md bg-white ml-30 rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           🥩 Calculadora de Gasto Calórico 🥗
         </h1>
@@ -243,6 +243,7 @@ export default function App() {
           )}
         </div>
       </div>
+      <div className="max-w-md ml-auto bg-white mr-30 rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6"></div>
     </div>
   );
 }
