@@ -86,7 +86,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <div className="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           🥩 Calculadora de Gasto Calórico 🥗
         </h1>
@@ -219,7 +219,7 @@ export default function App() {
             Calcular
           </button>
           {result && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-md">
+            <div className=" flex-1 mt-6 p-4 bg-gray-50 rounded-md">
               <h2 className="text-xl font-bold text-gray-800 mb-2">
                 Resultados
               </h2>
@@ -257,9 +257,9 @@ export default function App() {
                     <h3 className="font-medium text-gray-800">
                       Macronutrientes:
                     </h3>
-                    <p>Proteína: {result.macros.protein}g</p>
-                    <p>Gorduras: {result.macros.fats}g</p>
-                    <p>Carboidratos: {result.macros.carbs}g</p>
+                    <p>🥩 Proteínas: {result.macros.protein}g</p>
+                    <p>🥑 Gorduras: {result.macros.fats}g</p>
+                    <p>🍚 Carboidratos: {result.macros.carbs}g</p>
                   </div>
                 )}
               </div>
