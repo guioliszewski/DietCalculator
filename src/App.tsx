@@ -86,7 +86,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <div className="max-w-md flex flex-col bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           🥩 Calculadora de Gasto Calórico 🥗
         </h1>
@@ -218,55 +218,48 @@ export default function App() {
           >
             Calcular
           </button>
-          {result && (
-            <div className=" flex-1 mt-6 p-4 bg-gray-50 rounded-md">
-              <h2 className="text-xl font-bold text-gray-800 mb-2">
-                Resultados
-              </h2>
-              <div className="space-y-2">
-                <p>
-                  <span className="font-medium">
-                    Taxa Metabólica Basal (TMB):
-                  </span>{" "}
-                  {result.bmr} kcal/dia
-                </p>
-                <p>
-                  <span className="font-medium">
-                    Gasto Calórico Diário (TDEE):
-                  </span>{" "}
-                  {result.tdeeBase} kcal/dia
-                </p>
-                <p>
-                  <span className="font-medium">
-                    Com o objetivo de {""}
-                    {result.goalLevel === "cut"
-                      ? "Cutting"
-                      : result.goalLevel === "agressiveCut"
-                      ? "Cutting Agressivo"
-                      : result.goalLevel === "maintain"
-                      ? "Manutenção de Peso"
-                      : result.goalLevel === "leanBulk"
-                      ? "Bulking Leve"
-                      : "Bulking"}
-                    , você precisa consumir:
-                  </span>{" "}
-                  {result.tdee} kcal/dia
-                </p>
-                {result?.macros && (
-                  <div className="mt-4 p-4 bg-blue-50 rounded-md">
-                    <h3 className="font-medium text-gray-800">
-                      Macronutrientes:
-                    </h3>
-                    <p>🥩 Proteínas: {result.macros.protein}g</p>
-                    <p>🥑 Gorduras: {result.macros.fats}g</p>
-                    <p>🍚 Carboidratos: {result.macros.carbs}g</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </div>
+
+      {result && (
+        <div className=" flex-1 mt-6 p-4 bg-gray-500 rounded-md max-w-md">
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Resultados</h2>
+          <div className="space-y-2">
+            <p>
+              <span className="font-medium">Taxa Metabólica Basal (TMB):</span>{" "}
+              {result.bmr} kcal/dia
+            </p>
+            <p>
+              <span className="font-medium">Gasto Calórico Diário (TDEE):</span>{" "}
+              {result.tdeeBase} kcal/dia
+            </p>
+            <p>
+              <span className="font-medium">
+                Com o objetivo de {""}
+                {result.goalLevel === "cut"
+                  ? "Cutting"
+                  : result.goalLevel === "agressiveCut"
+                  ? "Cutting Agressivo"
+                  : result.goalLevel === "maintain"
+                  ? "Manutenção de Peso"
+                  : result.goalLevel === "leanBulk"
+                  ? "Bulking Leve"
+                  : "Bulking"}
+                , você precisa consumir:
+              </span>{" "}
+              {result.tdee} kcal/dia
+            </p>
+            {result?.macros && (
+              <div className="mt-4 p-4 bg-blue-50 rounded-md">
+                <h3 className="font-medium text-gray-800">Macronutrientes:</h3>
+                <p>🥩 Proteínas: {result.macros.protein}g</p>
+                <p>🥑 Gorduras: {result.macros.fats}g</p>
+                <p>🍚 Carboidratos: {result.macros.carbs}g</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
